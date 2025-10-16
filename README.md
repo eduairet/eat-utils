@@ -36,5 +36,7 @@ Utils for productivity.
 
 ## Available Scripts
 
-- [compress-pdf](./scripts/compress-pdf/main.py): Compress PDF files in the `pdfs` directory and save them to the `compressed_pdfs` directory.
-- [convert-to-webp](./scripts/convert-to-webp/main.py): Convert images in the `images` directory to WebP format and save them to the `webp_images` directory.
+- [compress-pdf](./scripts/compress-pdf/main.py)
+- [convert-to-webp](./scripts/convert-to-webp/main.py)
+- [resize-images-with-pattern](./scripts/resize-images-with-pattern/main.py)
+- [convert-to-ico](./scripts/convert-to-ico/main.py)
