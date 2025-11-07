@@ -1,0 +1,29 @@
+# Docker Compose service for running wasm-pack in a Rust environment.
+# - Uses the official Rust image.
+# - Mounts the project root directory into /workspace for code access.
+# - Loads environment variables from .env and sets CARGO_HOME for cargo caching.
+# - Installs wasm-pack on container startup using the official installer script.
+# - Opens an interactive bash shell after setup for development convenience.
+services:
+  wasm-pack:
+    image: rust:latest
+    container_name: wasm-pack
+    working_dir: /workspace
+    volumes:
+      - type: bind
+        source: ${PROJECT_ROOT}
+        target: /workspace
+    tty: true
+    stdin_open: true
+    env_file:
+      - .env
+    environment:
+      - CARGO_HOME=/workspace/.cargo
+    # Install wasm-pack on container startup
+    command: >
+      bash -c "
+        apt-get update &&
+        apt-get install -y curl &&
+        curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh &&
+        export PATH=\"/workspace/.cargo/bin:$PATH\"
+      "
