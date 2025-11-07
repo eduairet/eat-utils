@@ -18,6 +18,9 @@ Open a bash shell inside the running container:
 docker compose exec wasm-pack /bin/bash
 ```
 
+> [!TIP]
+> To exit the container shell, type `exit` and press Enter.
+
 ### 3. Build your project
 
 Inside the container shell, navigate to the mounted project directory and run:
