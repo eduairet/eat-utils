@@ -8,11 +8,12 @@ services:
   wasm-pack:
     image: rust:latest
     container_name: wasm-pack
-    working_dir: /workspace
+    working_dir: /project
     volumes:
       - type: bind
         source: ${PROJECT_ROOT}
-        target: /workspace
+        target: /project
+      - cargo-cache:/workspace/.cargo
     tty: true
     stdin_open: true
     env_file:
@@ -27,3 +28,6 @@ services:
         curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh &&
         export PATH=\"/workspace/.cargo/bin:$PATH\"
       "
+
+volumes:
+  cargo-cache:
